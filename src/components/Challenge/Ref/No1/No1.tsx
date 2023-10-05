@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export const No1 = () => {
   const [text, setText] = useState("");
   const [isSending, setIsSending] = useState(false);
-  let timeoutID = null;
+  const timeoutID = null;
+  const ref = useRef(null);
 
   function handleSend() {
     setIsSending(true);
-    timeoutID = setTimeout(() => {
+    ref.current = setTimeout(() => {
       alert("Sent!");
       setIsSending(false);
     }, 3000);
@@ -17,7 +18,7 @@ export const No1 = () => {
 
   function handleUndo() {
     setIsSending(false);
-    clearTimeout(timeoutID);
+    clearTimeout(ref.current);
   }
 
   return (
