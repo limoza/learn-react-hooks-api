@@ -1,17 +1,17 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 
 export const No2 = () => {
-  const isOnRef = useRef(false);
+  const [isOn, setIsOn] = useState(false);
   return (
     <button
       onClick={() => {
-        isOnRef.current = !isOnRef.current;
+        setIsOn((prev) => !prev);
       }}
       className="border text-black"
     >
-      {isOnRef.current ? "On" : "Off"}
+      {isOn ? "On" : "Off"}
     </button>
   );
 };
